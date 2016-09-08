@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -182,6 +183,7 @@
     <Content Include="css\jquery.mCustomScrollbar.min.css" />
     <Content Include="css\pace-theme-barber-shop.css" />
     <Content Include="css\pace-theme-loading-bar.css" />
+    <Content Include="demo结构.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\BrandLogo\ACURA.jpg" />
