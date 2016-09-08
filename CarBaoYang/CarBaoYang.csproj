@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B4E228C9-E5E5-4417-A094-9BB4EF10E904}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarBaoYang</RootNamespace>
+    <AssemblyName>CarBaoYang</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmitMapper">
+      <HintPath>G:\框架\PandornaAppApi_2016-5-31\PandornaAppApi\bin\Debug\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>G:\框架\PandornaAppApi_2016-5-31\PandornaAppApi\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Tracing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.4.0.30506\lib\net40\System.Web.Http.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.30506\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Cache\BrandManage.cs" />
+    <Compile Include="Cache\CarModelManage.cs" />
+    <Compile Include="Cache\ManufacturerManage.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VehiclesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceitemProductMapping.cs" />
+    <Compile Include="Models\ModelDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultJson\Brands.cs" />
+    <Compile Include="ResultJson\CarModel.cs" />
+    <Compile Include="ResultJson\maintenanceitem.cs" />
+    <Compile Include="ResultJson\ModelDetails.cs" />
+    <Compile Include="ResultJson\manufacturer.cs" />
+    <Compile Include="ResultJson\Product.cs" />
+    <Compile Include="Unit\ClassExtension.cs" />
+    <Compile Include="Unit\Config.cs" />
+    <Compile Include="Unit\EntityExtension.cs" />
+    <Compile Include="Unit\SqlMapper.cs" />
+    <Compile Include="Unit\WebCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\cartype.css" />
+    <Content Include="css\common.css" />
+    <Content Include="css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="css\pace-theme-barber-shop.css" />
+    <Content Include="css\pace-theme-loading-bar.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="images\BrandLogo\ACURA.jpg" />
+    <Content Include="images\BrandLogo\ADAYO.jpg" />
+    <Content Include="images\BrandLogo\ALFA-ROMEO.jpg" />
+    <Content Include="images\BrandLogo\ALPINA.jpg" />
+    <Content Include="images\BrandLogo\ANCHI.jpg" />
+    <Content Include="images\BrandLogo\ASTON-MARTIN.jpg" />
+    <Content Include="images\BrandLogo\AUDI.jpg" />
+    <Content Include="images\BrandLogo\BAOJUN.jpg" />
+    <Content Include="images\BrandLogo\BEIJING.jpg" />
+    <Content Include="images\BrandLogo\BEIQI.jpg" />
+    <Content Include="images\BrandLogo\BEIQIZHIZAO.jpg" />
+    <Content Include="images\BrandLogo\BENTLEY.jpg" />
+    <Content Include="images\BrandLogo\BESTURN.jpg" />
+    <Content Include="images\BrandLogo\BMW.jpg" />
+    <Content Include="images\BrandLogo\BORGWARD.jpg" />
+    <Content Include="images\BrandLogo\BRABUS.jpg" />
+    <Content Include="images\BrandLogo\BUFORI.jpg" />
+    <Content Include="images\BrandLogo\BUGATTI.jpg" />
+    <Content Include="images\BrandLogo\BUICK.jpg" />
+    <Content Include="images\BrandLogo\BYD.jpg" />
+    <Content Include="images\BrandLogo\CADILLAC.jpg" />
+    <Content Include="images\BrandLogo\CARLSSON.jpg" />
+    <Content Include="images\BrandLogo\CHANGAN-SHANGYONG.jpg" />
+    <Content Include="images\BrandLogo\CHANGAN.jpg" />
+    <Content Include="images\BrandLogo\CHANGHE.jpg" />
+    <Content Include="images\BrandLogo\CHERY.jpg" />
+    <Content Include="images\BrandLogo\CHEVROLET.jpg" />
+    <Content Include="images\BrandLogo\CHRYSLER.jpg" />
+    <Content Include="images\BrandLogo\CIIMO.jpg" />
+    <Content Include="images\BrandLogo\CITROEN.jpg" />
+    <Content Include="images\BrandLogo\COWIN.jpg" />
+    <Content Include="images\BrandLogo\DADI.jpg" />
+    <Content Include="images\BrandLogo\DAEWOO.jpg" />
+    <Content Include="images\BrandLogo\DAIHATSU.jpg" />
+    <Content Include="images\BrandLogo\DENZA.jpg" />
+    <Content Include="images\BrandLogo\DODGE.jpg" />
+    <Content Include="images\BrandLogo\DONGFENG.jpg" />
+    <Content Include="images\BrandLogo\DS.jpg" />
+    <Content Include="images\BrandLogo\EMGRAND.jpg" />
+    <Content Include="images\BrandLogo\ENGLON.jpg" />
+    <Content Include="images\BrandLogo\ENRANGER.jpg" />
+    <Content Include="images\BrandLogo\EUROPESTAR.jpg" />
+    <Content Include="images\BrandLogo\EVERUS.jpg" />
+    <Content Include="images\BrandLogo\FENGDU.jpg" />
+    <Content Include="images\BrandLogo\FENGSHEN.jpg" />
+    <Content Include="images\BrandLogo\FENGXING.jpg" />
+    <Content Include="images\BrandLogo\FERRARI.jpg" />
+    <Content Include="images\BrandLogo\FIAT.jpg" />
+    <Content Include="images\BrandLogo\FODAY.jpg" />
+    <Content Include="images\BrandLogo\FORD.jpg" />
+    <Content Include="images\BrandLogo\FUQI.jpg" />
+    <Content Include="images\BrandLogo\FUTIAN.jpg" />
+    <Content Include="images\BrandLogo\GEELY.jpg" />
+    <Content Include="images\BrandLogo\GLEAGLE.jpg" />
+    <Content Include="images\BrandLogo\GM.jpg" />
+    <Content Include="images\BrandLogo\GMC.jpg" />
+    <Content Include="images\BrandLogo\GREAT-WALL.jpg" />
+    <Content Include="images\BrandLogo\HAFEI.jpg" />
+    <Content Include="images\BrandLogo\HAIGE.jpg" />
+    <Content Include="images\BrandLogo\HAIMA.jpg" />
+    <Content Include="images\BrandLogo\HAVAL.jpg" />
+    <Content Include="images\BrandLogo\HENGTIAN.jpg" />
+    <Content Include="images\BrandLogo\HONDA.jpg" />
+    <Content Include="images\BrandLogo\HONGQI.jpg" />
+    <Content Include="images\BrandLogo\HUANGHAI.jpg" />
+    <Content Include="images\BrandLogo\HUANSU.jpg" />
+    <Content Include="images\BrandLogo\HUAPU.jpg" />
+    <Content Include="images\BrandLogo\HUASONG.jpg" />
+    <Content Include="images\BrandLogo\HUATAI.jpg" />
+    <Content Include="images\BrandLogo\HUIZHONG.jpg" />
+    <Content Include="images\BrandLogo\HUMMER.jpg" />
+    <Content Include="images\BrandLogo\HYUNDAI.jpg" />
+    <Content Include="images\BrandLogo\INFINITI.jpg" />
+    <Content Include="images\BrandLogo\ISUZU.jpg" />
+    <Content Include="images\BrandLogo\IVECO.jpg" />
+    <Content Include="images\BrandLogo\JAC.jpg" />
+    <Content Include="images\BrandLogo\JAGUAR.jpg" />
+    <Content Include="images\BrandLogo\JEEP.jpg" />
+    <Content Include="images\BrandLogo\JIANGNAN.jpg" />
+    <Content Include="images\BrandLogo\JIAO.jpg" />
+    <Content Include="images\BrandLogo\JIAXING.jpg" />
+    <Content Include="images\BrandLogo\JINBEI.jpg" />
+    <Content Include="images\BrandLogo\JMC.jpg" />
+    <Content Include="images\BrandLogo\JONWAY.jpg" />
+    <Content Include="images\BrandLogo\JOYLONG.jpg" />
+    <Content Include="images\BrandLogo\KARRY.jpg" />
+    <Content Include="images\BrandLogo\KAWEI.jpg" />
+    <Content Include="images\BrandLogo\KIA.jpg" />
+    <Content Include="images\BrandLogo\KOENIGSEGG.jpg" />
+    <Content Include="images\BrandLogo\LAMBORGHINI.jpg" />
+    <Content Include="images\BrandLogo\LAND-ROVER.jpg" />
+    <Content Include="images\BrandLogo\LANDWIND.jpg" />
+    <Content Include="images\BrandLogo\LEXUS.jpg" />
+    <Content Include="images\BrandLogo\LIEBAO.jpg" />
+    <Content Include="images\BrandLogo\LIFAN.jpg" />
+    <Content Include="images\BrandLogo\LINCOLN.jpg" />
+    <Content Include="images\BrandLogo\LORINSER.jpg" />
+    <Content Include="images\BrandLogo\LOTUS.jpg" />
+    <Content Include="images\BrandLogo\LUXGEN.jpg" />
+    <Content Include="images\BrandLogo\MASERATI.jpg" />
+    <Content Include="images\BrandLogo\MAXUS.jpg" />
+    <Content Include="images\BrandLogo\MAYBACH.jpg" />
+    <Content Include="images\BrandLogo\MAZDA.jpg" />
+    <Content Include="images\BrandLogo\MCLAREN.jpg" />
+    <Content Include="images\BrandLogo\MEIYA.jpg" />
+    <Content Include="images\BrandLogo\MERCEDES-BENZ.jpg" />
+    <Content Include="images\BrandLogo\MG.jpg" />
+    <Content Include="images\BrandLogo\MINI.jpg" />
+    <Content Include="images\BrandLogo\MITSUBISHI.jpg" />
+    <Content Include="images\BrandLogo\MITSUOKA.jpg" />
+    <Content Include="images\BrandLogo\NISSAN.jpg" />
+    <Content Include="images\BrandLogo\OLEY.jpg" />
+    <Content Include="images\BrandLogo\OPEL.jpg" />
+    <Content Include="images\BrandLogo\PAGANI.jpg" />
+    <Content Include="images\BrandLogo\PEUGEOT.jpg" />
+    <Content Include="images\BrandLogo\PORSCHE.jpg" />
+    <Content Include="images\BrandLogo\QICHEN.jpg" />
+    <Content Include="images\BrandLogo\QINGLING.jpg" />
+    <Content Include="images\BrandLogo\QITENG.jpg" />
+    <Content Include="images\BrandLogo\QOROS.jpg" />
+    <Content Include="images\BrandLogo\RELY.jpg" />
+    <Content Include="images\BrandLogo\RENAULT.jpg" />
+    <Content Include="images\BrandLogo\RIICH.jpg" />
+    <Content Include="images\BrandLogo\ROEWE.jpg" />
+    <Content Include="images\BrandLogo\ROLLS-ROYCE.jpg" />
+    <Content Include="images\BrandLogo\ROVER.jpg" />
+    <Content Include="images\BrandLogo\RUF.jpg" />
+    <Content Include="images\BrandLogo\SAAB.jpg" />
+    <Content Include="images\BrandLogo\SCION.jpg" />
+    <Content Include="images\BrandLogo\SEAT.jpg" />
+    <Content Include="images\BrandLogo\SENOVA.jpg" />
+    <Content Include="images\BrandLogo\SHUANGHUAN.jpg" />
+    <Content Include="images\BrandLogo\SKODA.jpg" />
+    <Content Include="images\BrandLogo\SMART.jpg" />
+    <Content Include="images\BrandLogo\SOUEAST.jpg" />
+    <Content Include="images\BrandLogo\SPRINGO.jpg" />
+    <Content Include="images\BrandLogo\SPYKER.jpg" />
+    <Content Include="images\BrandLogo\SSANG-YONG.jpg" />
+    <Content Include="images\BrandLogo\SUBARU.jpg" />
+    <Content Include="images\BrandLogo\SUZUKI.jpg" />
+    <Content Include="images\BrandLogo\TESLA.jpg" />
+    <Content Include="images\BrandLogo\TIANMA.jpg" />
+    <Content Include="images\BrandLogo\TONGJIA.jpg" />
+    <Content Include="images\BrandLogo\TOYOTA.jpg" />
+    <Content Include="images\BrandLogo\TRUMPCHI.jpg" />
+    <Content Include="images\BrandLogo\VOLKSWAGEN.jpg" />
+    <Content Include="images\BrandLogo\VOLVO.jpg" />
+    <Content Include="images\BrandLogo\WEIWANG.jpg" />
+    <Content Include="images\BrandLogo\WIESMANN.jpg" />
+    <Content Include="images\BrandLogo\WULING.jpg" />
+    <Content Include="images\BrandLogo\XIALI.jpg" />
+    <Content Include="images\BrandLogo\XIAOKANG.jpg" />
+    <Content Include="images\BrandLogo\XINKAI.jpg" />
+    <Content Include="images\BrandLogo\XINYATU.jpg" />
+    <Content Include="images\BrandLogo\YANGZI.jpg" />
+    <Content Include="images\BrandLogo\YEMA.jpg" />
+    <Content Include="images\BrandLogo\YIQI.jpg" />
+    <Content Include="images\BrandLogo\YUNQUE.jpg" />
+    <Content Include="images\BrandLogo\ZD.jpg" />
+    <Content Include="images\BrandLogo\ZHONGHUA.jpg" />
+    <Content Include="images\BrandLogo\ZHONGSHUN.jpg" />
+    <Content Include="images\BrandLogo\ZHONGXIN.jpg" />
+    <Content Include="images\BrandLogo\ZOEMO.jpg" />
+    <Content Include="images\BrandLogo\ZOTYE.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="js\cartype.js" />
+    <Content Include="js\lib\backbone-1.1.2.min.js" />
+    <Content Include="js\lib\jquery-1.11.3.min.js" />
+    <Content Include="js\lib\jquery.cookie.js" />
+    <Content Include="js\lib\respond1.4.2.min.js" />
+    <Content Include="js\lib\underscore-1.8.3.min.js" />
+    <Content Include="js\lib\pace.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\iconfont\iconfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\api.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>23839</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:23433/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

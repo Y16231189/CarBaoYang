@@ -1,0 +1,352 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="keywords" content="关键字" />
+    <meta name="description" content="描述信息" />
+    <title></title>
+    <link rel="shortcut icon" href="Images/ioffice32x32.ico" type="image/x-icon" />
+    <link href="~/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <link href="~/css/common.css" rel="stylesheet" />
+    <link href="~/css/cartype.css" rel="stylesheet" />
+     
+    <script src="~/js/lib/respond1.4.2.min.js"></script>
+    <!--<script src="~/js/lib/pace.min.js"></script>  <link href="~/css/pace-theme-loading-bar.css" rel="stylesheet" /> -->
+</head>
+<body>
+    <div class="car_type">
+        <div class="header">
+            <div class="content">
+                <div class="logo"><img src="/images/logo.png" alt="logo" title="logo" /><span class="name">趣保养</span></div>
+                <span class="title">车型查询</span>
+            </div>
+        </div>
+        <div id="header"></div>
+        <div id="datas_show" class="datas_show">
+        </div>
+    </div>
+    <script src="~/js/lib/jquery-1.11.3.min.js"></script>
+    <script src="~/js/lib/underscore-1.8.3.min.js"></script>
+    <script src="~/js/lib/backbone-1.1.2.min.js"></script>
+    <script src="~/js/lib/jquery.cookie.js"></script>
+    <script src="~/js/cartype.js"></script>
+    <!-- 首页模板 -->
+    <script type="text/template" id="home">
+        <div class="content home">
+            <div class="search">
+                <input id="vin" type="text" autocapitalize="off" placeholder="请输入VIN码" />
+                <button id="search_btn" class="iconfont search_btn">&#xe601;</button>
+                <span class="iconfont clearText">&#xe602;</span>
+            </div>
+            <div class="search_result" id="search_result">
+            </div>
+        </div>
+    </script>
+    <!-- 品牌图片list模板 -->
+    <script type="text/template" id="home_brand">
+        <div class="brand_logo">
+            <ul>
+                <%_.each(brandDatas, function(item){%>
+                <li>
+                    <a href="#/brandModelList/<%=item.Code%>">
+                        <div class="pic">
+                            <img src="<%=item.LogUrl%>" />
+                        </div>
+                        <span class="name"><%=item.Name%></span>
+                    </a>
+                </li>
+                <%});%>
+            </ul>
+        </div>
+    </script>
+    <!-- 查询结果模板 -->
+    <script type="text/template" id="vin_result">
+        <div class="vinser_result">
+            <div class="back_box">
+                <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs last" href="javascript:;">年款</a>
+            </div>
+            <div class="result_list">
+                <ul>
+                    <%_.each(vinDatas, function(item){%>
+                    <li>
+                        <a href="#/carDetails/<%=item.LYId%>"><%=item.ModelYear%> <%=item.ModelName%> <%=item.ModelVersion%><i class="arrow_right"></i></a>
+                    </li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <!-- 品牌对应型号模板 -->
+    <script type="text/template" id="brand_model_list">
+        <div class="content brand_model_list">
+            <div class="vinser_result">
+                <div class="back_box">
+                    <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                    <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                    <a class="crumbs last" href="javascript:;">车系车型</a>
+                </div>
+                <div class="result_list">
+                    <ul>
+                        <%_.each(modelList, function(item){%>
+                        <li>
+                            <a href="#/brandModelListDetails/<%=item.ManufacturerCode%>/<%=item.ModelName%>"><%=item.ManufacturerName%> <%=item.ModelName%>-<%=item.Serie%><i class="arrow_right"></i></a>
+                        </li>
+                        <%});%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 型号对应详情模板 -->
+    <script type="text/template" id="model_detail">
+        <div class="content brand_carType">
+            <div class="back_box">
+                <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back" href="javascript:;">车系车型</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs last" href="javascript:;">年款</a>
+            </div>
+            <div class="container">
+                <h2 class="brand_name"><%=modelDetail[0].Manufacturer%> <%=modelDetail[0].ModelName%> <%=modelDetail[0].Serie%></h2>
+                <ul>
+                    <%_.each(modelDetail,function(item){%>
+                    <li>
+                        <a href="#/carDetails/<%=item.LYId%>"><%=item.ModelYear%> - <%=item.ModelName%> - <%=item.ModelVersion%><i class="arrow_right"></i></a>
+                    </li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <!-- 车子详细信息模板 -->
+    <script type="text/template" id="car_details">
+        <div class="content vin_introduce">
+            <div class="back_box">
+                <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back2" href="javascript:;">车系车型</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back" href="javascript:;">年款</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs last" href="javascript:;">详情</a>
+            </div>
+            <div class="intr_table">
+                <div class="header">
+                    <img src="<%=carDetailsDatas.VehicleBrandData.LogUrl%>" title="brand logo" />
+                    <p><%=carDetailsDatas.VehicleBrandData.Name%> <%=carDetailsDatas.ModelName%> <%=carDetailsDatas.ModelYear%> - <%=carDetailsDatas.Serie%> <%=carDetailsDatas.ModelVersion%></p>
+                    <a href="#/maintain/<%=carDetailsDatas.WVMId%>">查看保养说明</a>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li>
+                            <span class="name">编号</span>
+                            <span class="value"><%=carDetailsDatas.ModelName%></span>
+                        </li>
+                        <li>
+                            <span class="name">年款</span>
+                            <span class="value"><%=carDetailsDatas.ModelYear%></span>
+                        </li>
+                        <li>
+                            <span class="name">销售版本</span>
+                            <span class="value"><%=carDetailsDatas.ModelVersion%></span>
+                        </li>
+                        <li>
+                            <span class="name">指导价格</span>
+                            <span class="value"><%=carDetailsDatas.PriceReference%></span>
+                        </li>
+                        <li>
+                            <span class="name">上市年份</span>
+                            <span class="value"><%=carDetailsDatas.YearStartSelling%></span>
+                        </li>
+                        <li>
+                            <span class="name">工信部编号</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">发动机型号</span>
+                            <span class="value"><%=carDetailsDatas.EngineCode%></span>
+                        </li>
+                        <li>
+                            <span class="name">发动机形式</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">发动机气缸数</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">气缸容积</span>
+                            <span class="value"><%=carDetailsDatas.EngineCapacityML%></span>
+                        </li>
+                        <li>
+                            <span class="name">压缩比</span>
+                            <span class="value"><%=carDetailsDatas.CompressionRatio%></span>
+                        </li>
+                        <li>
+                            <span class="name">涡轮增压</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">燃油类型</span>
+                            <span class="value"><%=carDetailsDatas.FuelType%></span>
+                        </li>
+                        <li>
+                            <span class="name">燃油标号</span>
+                            <span class="value"><%=carDetailsDatas.FuelClass%></span>
+                        </li>
+                        <li>
+                            <span class="name">最大功率</span>
+                            <span class="value"><%=carDetailsDatas.MaxOutputKW%></span>
+                        </li>
+                        <li>
+                            <span class="name">最大马力</span>
+                            <span class="value"><%=carDetailsDatas.MaxOutputHP%></span>
+                        </li>
+                        <li>
+                            <span class="name">最大马力转速</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">最大扭矩</span>
+                            <span class="value"><%=carDetailsDatas.MaxTorqueNM%></span>
+                        </li>
+                        <li>
+                            <span class="name">最大扭矩转速</span>
+                            <span class="value"><%=carDetailsDatas.MaxTorqueRPM%></span>
+                        </li>
+                        <li>
+                            <span class="name">变速箱形式</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">前刹</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">后刹</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">转向形式</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">前胎</span>
+                            <span class="value"></span>
+                        </li>
+                        <li>
+                            <span class="name">后胎</span>
+                            <span class="value"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 保养说明模板 -->
+    <script type="text/template" id="baoyang_shuoming">
+        <div class="content by_instruction">
+            <div class="back_box">
+                <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back3" href="javascript:;">车系车型</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back2" href="javascript:;">年款</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back" href="javascript:;">详情</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs last" href="javascript:;">保养信息</a>
+            </div>
+            <div class="container">
+                <div class="caption">
+                    <img src="" title="brand logo" />
+                    <p>奔驰</p>
+                </div>
+                <div class="table">
+                    <%_.each(maintainDatas,function(item){%>
+                    <div class="row">
+                        <div class="cell c1">
+                            <p><%=item.Name%></p>
+                            <%if(item.HasProducts){%>
+                            <a href="#/products/<%=item.LyId%>/<%=item.MaintenanceCode%>">查看产品</a>
+                            <%}%>
+                        </div>
+                        <div class="cell c2">
+                            <div class="in_container">
+                                <div class="in_row">
+                                    <div class="in_cell c1">
+                                        保养间隔（公里）
+                                    </div>
+                                    <div class="in_cell c2">
+                                        <%=item.CycleKM%>
+                                    </div>
+                                </div>
+                                <div class="in_row">
+                                    <div class="in_cell c1">
+                                        保养建议
+                                    </div>
+                                    <div class="in_cell c2">
+                                        <%=item.CycleActionDesc%>
+                                    </div>
+                                </div>
+                                <div class="in_row">
+                                    <div class="in_cell c1">
+                                        保养间隔（月）
+                                    </div>
+                                    <div class="in_cell c2">
+                                        <%=item.CycleMonth%>
+                                    </div>
+                                </div>
+                            </div>
+                            <%if(item.VimPartSpecDatas.length > 0){%>
+                            <div class="in_container add">
+                                <div class="in_caption">规格</div>
+                                <%_.each(item.VimPartSpecDatas,function(d){%>
+                                <div class="in_row">
+                                    <div class="in_cell c1">
+                                        <%=d.SpecNameCN%>
+                                    </div>
+                                    <div class="in_cell c2">
+                                        <%=d.SpecValue%>
+                                    </div>
+                                </div>
+                                <%});%>
+                            </div>
+                            <%}%>
+                        </div>
+                    </div>
+                    <%});%>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 产品说明模板 -->
+    <script type="text/template" id="product_tp">
+        <div class="content goods">
+            <div class="back_box">
+                <a id="back_prev" href="javascript:void(0);"><i class="iconfont back_prev">&#xe605;</i></a>
+                <a class="crumbs" id="c_home" href="javascript:;">品牌</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back4" href="javascript:;">车系车型</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back3" href="javascript:;">年款</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back2" href="javascript:;">详情</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs" id="c_back" href="javascript:;">保养信息</a><span class="arrow_right">&gt;</span>
+                <a class="crumbs last" href="javascript:;">保养产品</a>
+            </div>
+            <%_.each(productDatas,function(item){%>
+            <div class="container">
+                <div class="name"><%=item.Name%></div>
+                <div class="small_container">
+                    <ul>
+                        <%_.each(item.SpecFeatureDatas,function(d){%>
+                        <li><%=d.FeatureValue%></li>
+                        <%});%>
+                    </ul>
+                </div>
+            </div>
+            <%});%>
+        </div>
+    </script>
+</body>
+</html>
+
